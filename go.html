@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>正在跳转...</title>
+  <script>
+    fetch('/redirect.json')
+      .then(res => res.json())
+      .then(data => {
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          document.body.innerHTML = '未设置跳转链接';
+        }
+      })
+      .catch(err => {
+        document.body.innerHTML = '读取失败';
+      });
+  </script>
+</head>
+<body>
+  正在跳转中，请稍候...
+</body>
+</html>
